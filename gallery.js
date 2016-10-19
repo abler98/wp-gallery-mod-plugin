@@ -20,7 +20,7 @@
 
     setInterval(function () {
         $gallery.each(function () {
-            if ($window.scrollTop() >= ($(this).outerHeight() - $(this).offset().top)) {
+            if (($window.scrollTop() + $window.outerHeight()) >= ($(this).outerHeight() + $(this).offset().top)) {
                 var start = parseInt($(this).data('current'));
                 showGalleryItems(this, start);
             }
