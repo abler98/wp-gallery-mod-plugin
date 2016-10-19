@@ -1,0 +1,23 @@
+.gallery {
+    //
+}
+
+.gallery:after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
+.gallery-item {
+    display: none;
+    background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, .2);
+    float: left;
+    margin: 1px;
+    height: auto;
+    width: 50%;
+}
+
+.gallery-item.active {
+    display: block;
+}
