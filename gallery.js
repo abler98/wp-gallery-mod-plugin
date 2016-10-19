@@ -31,6 +31,10 @@
         if ($(gallery).find('.gallery-item').length > start) {
             var items = $(gallery).find('.gallery-item').slice(start, start + size);
             $(gallery).data('current', start + items.length);
+            items.each(function () {
+                var img = $(this).find('img').first();
+                img.attr('src', img.attr('data-src'));
+            });
             items.addClass('active');
             $(gallery).masonry();
         }

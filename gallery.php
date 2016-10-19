@@ -34,3 +34,15 @@ wp_enqueue_style( 'gallery' );*/
 add_action( 'wp_head', 'print_gallery_css' );
 add_action( 'wp_head', 'print_gallery_head_js' );
 add_action( 'wp_footer', 'print_gallery_footer_js' );
+
+/*
+ * Lazy Loading
+ */
+
+function inject_gallery_lazy_loading_attributes($attr) {
+	$attr['data-src'] = $attr['src'];
+	$attr['src'] = admin_url('images/loading.gif');
+	return $attr;
+}
+
+add_filter('wp_get_attachment_image_attributes', 'inject_gallery_lazy_loading_attributes');
