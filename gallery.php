@@ -9,12 +9,24 @@ Author: abler98
 Author URI: https://github.com/abler98
 */
 
-wp_register_script( 'gallery', plugin_dir_url( __FILE__ ) . 'gallery.js' );
-wp_register_style( 'gallery', plugin_dir_url( __FILE__ ) . 'gallery.css' );
+function print_gallery_css() {
+	wp_print_styles( 'gallery' );
+}
 
-wp_enqueue_script( 'masonry' );
-wp_enqueue_script( 'gallery', false, [ 'jquery-masonry' ], false, true );
-wp_enqueue_style( 'gallery' );
+function print_gallery_head_js() {
+	wp_print_scripts( 'masonry' );
+}
+
+function print_gallery_footer_js() {
+	wp_print_scripts( 'gallery' );
+}
+
+wp_register_script( 'gallery', plugins_url( 'gallery.js', __FILE__ ) );
+wp_register_style( 'gallery', plugins_url( 'gallery.css', __FILE__ ) );
+
+add_action( 'wp_head', 'print_gallery_css' );
+add_action( 'wp_head', 'print_gallery_head_js' );
+add_action( 'wp_footer', 'print_gallery_footer_js' );
 
 /*
  * Lazy Loading
